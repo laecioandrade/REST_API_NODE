@@ -1,0 +1,27 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "Test REST API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laecioandrade/REST_API_NODE.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "rest"
+  ],
+  "author": "Laécio Rodrigues",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laecioandrade/REST_API_NODE/issues"
+  },
+  "homepage": "https://github.com/laecioandrade/REST_API_NODE#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
