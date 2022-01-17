@@ -8,6 +8,7 @@ const rotaPedidos = require('./routes/pedidos');
 
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
