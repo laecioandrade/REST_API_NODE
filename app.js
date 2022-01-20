@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const rotaProdutos = require('./routes/produtos');
 const rotaPedidos = require('./routes/pedidos');
 const rotaUsuarios = require('./routes/usuarios');
+const rotaImagens = require('./routes/imagens');
 
 
 app.use(morgan('dev'));
@@ -27,6 +28,8 @@ app.use((req, res, next) => {
 app.use('/produtos', rotaProdutos);
 app.use('/pedidos', rotaPedidos);
 app.use('/usuarios', rotaUsuarios);
+app.use('/imagens', rotaImagens);
+
 
 app.use((req, res, next) => {
     const erro = new Error('Não encontrado');
