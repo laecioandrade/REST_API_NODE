@@ -3,8 +3,8 @@ const router = express.Router();
 const multer = require('multer');
 const login = require('../middleware/login');
 
-const ImagensController = require('../controllers/imagens-controller');
+const ImagesController = require('../controllers/images-controller');
 
-router.delete('/:id_imagem', login.obrigatorio, ImagensController.deleteImagem);
+router.delete('/:imageId', login.obrigatorio, ImagesController.deleteImage);
 
 module.exports = router;
