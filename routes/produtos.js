@@ -31,22 +31,22 @@ const upload = multer({
 });
 
 
-router.get('/', ProdutosController.getProdutos);
+router.get('/', ProdutosController.getProducts);
 router.post(
     '/', 
     login.obrigatorio, 
-    upload.single('produto_imagem'), 
-    ProdutosController.postProdutos
+    upload.single('productImage'), 
+    ProdutosController.postProducts
 );
-router.get('/:id_produto', ProdutosController.getUmProduto);
-router.patch('/', login.obrigatorio, ProdutosController.updateProduto);
-router.delete('/', login.obrigatorio, ProdutosController.deleteProduto);
+router.get('/:productId', ProdutosController.getProductDetail);
+router.patch('/', login.obrigatorio, ProdutosController.updateProduct);
+router.delete('/', login.obrigatorio, ProdutosController.deleteProduct);
 router.post(
-    '/:id_produto/imagem', login.obrigatorio, 
-    upload.single('produto_imagem'),
-    ProdutosController.postImagem
+    '/:productId/imagem', login.obrigatorio, 
+    upload.single('productImage'),
+    ProdutosController.postImage
 );
-router.get('/:id_produto/imagens', ProdutosController.getImagens);
+router.get('/:productId/imagens', ProdutosController.getImages);
 
 
 module.exports = router;
