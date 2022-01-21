@@ -3,9 +3,9 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const rotaProdutos = require('./routes/produtos');
+const rotaProducts = require('./routes/products');
 const rotaPedidos = require('./routes/pedidos');
-const rotaUsuarios = require('./routes/usuarios');
+const rotaUser = require('./routes/user');
 const rotaImagens = require('./routes/imagens');
 
 
@@ -25,9 +25,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/produtos', rotaProdutos);
+app.use('/products', rotaProducts);
 app.use('/pedidos', rotaPedidos);
-app.use('/usuarios', rotaUsuarios);
+app.use('/user', rotaUser);
 app.use('/imagens', rotaImagens);
 
 

@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const login = require('../middleware/login');
 
-const ProdutosController = require('../controllers/produtos-controller');
+const ProductsController = require('../controllers/products-controller');
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb){
@@ -31,22 +31,22 @@ const upload = multer({
 });
 
 
-router.get('/', ProdutosController.getProducts);
+router.get('/', ProductsController.getProducts);
 router.post(
     '/', 
     login.obrigatorio, 
     upload.single('productImage'), 
-    ProdutosController.postProducts
+    ProductsController.postProducts
 );
-router.get('/:productId', ProdutosController.getProductDetail);
-router.patch('/', login.obrigatorio, ProdutosController.updateProduct);
-router.delete('/', login.obrigatorio, ProdutosController.deleteProduct);
+router.get('/:productId', ProductsController.getProductDetail);
+router.patch('/', login.obrigatorio, ProductsController.updateProduct);
+router.delete('/', login.obrigatorio, ProductsController.deleteProduct);
 router.post(
     '/:productId/image', login.obrigatorio, 
     upload.single('productImage'),
-    ProdutosController.postImage
+    ProductsController.postImage
 );
-router.get('/:productId/images', ProdutosController.getImages);
+router.get('/:productId/images', ProductsController.getImages);
 
 
 module.exports = router;
