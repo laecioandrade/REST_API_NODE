@@ -34,15 +34,15 @@ const upload = multer({
 router.get('/', ProductsController.getProducts);
 router.post(
     '/', 
-    login.obrigatorio, 
+    login.required, 
     upload.single('productImage'), 
     ProductsController.postProducts
 );
 router.get('/:productId', ProductsController.getProductDetail);
-router.patch('/', login.obrigatorio, ProductsController.updateProduct);
-router.delete('/', login.obrigatorio, ProductsController.deleteProduct);
+router.patch('/', login.required, ProductsController.updateProduct);
+router.delete('/', login.required, ProductsController.deleteProduct);
 router.post(
-    '/:productId/image', login.obrigatorio, 
+    '/:productId/image', login.required, 
     upload.single('productImage'),
     ProductsController.postImage
 );
