@@ -42,11 +42,11 @@ router.get('/:productId', ProdutosController.getProductDetail);
 router.patch('/', login.obrigatorio, ProdutosController.updateProduct);
 router.delete('/', login.obrigatorio, ProdutosController.deleteProduct);
 router.post(
-    '/:productId/imagem', login.obrigatorio, 
+    '/:productId/image', login.obrigatorio, 
     upload.single('productImage'),
     ProdutosController.postImage
 );
-router.get('/:productId/imagens', ProdutosController.getImages);
+router.get('/:productId/images', ProdutosController.getImages);
 
 
 module.exports = router;
