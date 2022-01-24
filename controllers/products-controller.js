@@ -11,6 +11,7 @@ exports.getProducts = async (req, res, next) => {
                     name: prod.name,
                     price: prod.price,
                     productImage: prod.productImage,
+                    categoryId: prod.categoryId,
                     request:{
                         type: 'GET',
                         description: 'Retorna os detalhes de um produto especifico',
@@ -26,11 +27,12 @@ exports.getProducts = async (req, res, next) => {
 };
 exports.postProducts = async(req, res, next) => {
     try {
-        const query = 'INSERT INTO products (name, price, productImage) VALUES (?,?,?);';
+        const query = 'INSERT INTO products (name, price, productImage, categoryId) VALUES (?,?,?,?);';
         const result = await mysql.execute(query,[
             req.body.name, 
             req.body.price, 
-            req.file.path
+            req.file.path,
+            req.body.categoryId
         ]);
         const response = {
             message: 'Produto inserido com sucesso',
@@ -39,6 +41,7 @@ exports.postProducts = async(req, res, next) => {
                 name: req.body.name,
                 price: req.body.price,
                 productImage: req.file.path,
+                categoryId: req.body.categoryId,
                 request:{
                     type: 'GET',
                     description: 'Retorna todos os produtos',

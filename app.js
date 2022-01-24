@@ -3,10 +3,11 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 
-const rotaProducts = require('./routes/products');
-const rotaOrders = require('./routes/orders');
-const rotaUser = require('./routes/user');
-const rotaImages = require('./routes/images');
+const productRoute = require('./routes/products');
+const orderRoute = require('./routes/orders');
+const userRoute = require('./routes/user');
+const imageRoute = require('./routes/images');
+const categoryRoute = require('./routes/categories');
 
 
 app.use(morgan('dev'));
@@ -25,10 +26,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/products', rotaProducts);
-app.use('/orders', rotaOrders);
-app.use('/user', rotaUser);
-app.use('/images', rotaImages);
+app.use('/products', productRoute);
+app.use('/orders', orderRoute);
+app.use('/user', userRoute);
+app.use('/images', imageRoute);
+app.use('/categories', categoryRoute);
 
 
 app.use((req, res, next) => {
