@@ -4,22 +4,25 @@ const jwt = require('jsonwebtoken');
 
 exports.registrationUser = async (req, res, next) => {
     try {
-        const query = 'SELECT * FROM users WHERE email = ?;'
+        /*const query = 'SELECT * FROM users WHERE email = ?;'
         const result = await mysql.execute(query, req.body.email);
         if(result.length > 0){
             return res.status(409).send({
                 message: 'User already registered!'
             });
         }
-        const hash = await bcrypt.hashSync(req.body.senha, 10);
-        const queryInsert = 'INSERT INTO users (email, password) VALUES (?,?);';
-        resultInsert = await mysql.execute(queryInsert, [req.body.email,hash]);
+        const hash = await bcrypt.hashSync(req.body.senha, 10);*/
+
+        const users = req.body.users.map(user => [
+            user.email,
+            bcrypt.hashSync(user.password, 10)
+        ])
+
+        const queryInsert = 'INSERT INTO users (email, password) VALUES ?;';
+        resultInsert = await mysql.execute(queryInsert, [users]);
         response = {
             message: 'User created successfully!',
-            createdUser: {
-                userId: resultInsert.insertId,
-                email: req.body.email
-            }
+            createdUsers: req.body.users.map(user => {return {email: user.email}})
         }
         return res.status(201).send(response);
     } catch (error) {

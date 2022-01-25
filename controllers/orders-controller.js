@@ -93,7 +93,7 @@ exports.getOrderDetail = async (req, res, next) => {
     } catch (error) {
         if(error){return res.status(500).send({error:error})};
     }
-}
+};
 exports.deleteOrder = async (req, res, next) => {
     try {
         const query = "DELETE FROM orders WHERE orderId = ?;";
@@ -114,4 +114,4 @@ exports.deleteOrder = async (req, res, next) => {
     } catch (error) {
         if(error){return res.status(500).send({error:error})};
     }
-}
+};
